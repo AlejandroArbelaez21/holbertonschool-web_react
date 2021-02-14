@@ -15,12 +15,11 @@ interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-const printTeacher: printTeacherFunction = (
+export const printTeacher: printTeacherFunction = function (
   firstName: string,
   lastName: string
-): string => {
-  const firstInitial: string = firstName.charAt(0);
-  return `${firstInitial}. ${lastName}`;
+): string {
+  return `${firstName.charAt(0)}. ${lastName}`;
 };
 
 interface StudentClass {
