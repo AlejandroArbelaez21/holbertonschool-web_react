@@ -10,39 +10,37 @@ interface TeacherInterface {
   workTeacherTasks(): string;
 }
 
-class Director implements DirectorInterface {
+export class Director implements DirectorInterface {
   workFromHome(): string {
-    return 'Working from home';
+    console.log("Working from home");
+    return "Working from home";
   }
-
+  
   getCoffeeBreak(): string {
-    return 'Getting a coffee break';
+    console.log("Getting a coffee break");
+    return "Getting a coffee break";
   }
-
+  
   workDirectorTasks(): string {
-    return 'Getting to director tasks';
+    console.log("Getting to director tasks");
+    return "Getting to director tasks";
   }
 }
-
-class Teacher implements TeacherInterface {
+ 
+export class Teacher implements TeacherInterface {
   workFromHome(): string {
-    return 'Cannot work from home';
+    return "Cannot work from home";
   }
-
   getCoffeeBreak(): string {
-    return 'Cannot have a break';
+    return "Cannot have a break";
   }
-
   workTeacherTasks(): string {
-    return 'Getting to work';
+    return "Getting to work";
   }
 }
-
-const createEmployee = (
-  firstName: string,
-  lastName: string,
-  salary: number | string
-): Director | Teacher => {
-  if (typeof salary === 'number' && salary < 500) return new Teacher();
+  
+export function createEmployee(salary: number | string): Teacher | Director {
+  if (typeof salary === "number" && salary < 500) return new Teacher();
+  
   return new Director();
-};
+}
