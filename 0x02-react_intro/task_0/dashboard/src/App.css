@@ -1,0 +1,24 @@
+.App-body {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: auto 1fr auto;
+  border-bottom: 4px solid #e2374c;
+  border-top: 4px solid #e2374c;
+}
+
+.App-body p {
+  padding: 2rem;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #e2374c;
+}
+
+.App-footer {
+  padding: 1rem;
+  text-align: center;
+  font-style: italic;
+}
