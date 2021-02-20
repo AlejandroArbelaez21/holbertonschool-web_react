@@ -1,5 +1,12 @@
-import $ from 'jquery';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App/App';
+import Notifications from './Notifications/Notifications';
 
-$('body').append('<p>Holberton Dashboard</p>');
-$('body').append('<p>Dashboard data for the students</p>');
-$('body').append('<p>Copyright - Holberton School</p>');
+ReactDOM.render(
+  <React.StrictMode>
+    <Notifications />
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
