@@ -10,7 +10,7 @@ import CourseList from '../CourseList/CourseList';
 class App extends Component {
   render() {
     const { isLoggedIn } = this.props;
-    
+
     const listCourses = [
       { id: 1, name: 'ES6', credit: 60 },
       { id: 2, name: 'Webpack', credit: 20 },
