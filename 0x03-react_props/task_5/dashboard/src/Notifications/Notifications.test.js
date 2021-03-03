@@ -92,10 +92,6 @@ describe('<Notifications />', () => {
       expect(notif0.props()).to.have.property('html', undefined);
 
       expect(notif1.props()).to.have.property('type', 'urgent');
-      expect(notif1.props()).to.have.property('value', '');
-      expect(notif1.props()).to.have.property('html', {
-        __html: '<strong>Project Deadline Approaching</strong>'
-      });
     });
   });
 
