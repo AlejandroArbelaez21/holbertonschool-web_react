@@ -6,6 +6,8 @@ import Login from '../Login/Login';
 import Notifications from '../Notifications/Notifications';
 import PropTypes from 'prop-types';
 import CourseList from '../CourseList/CourseList';
+import BodySection from '../BodySection/BodySection';
+import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 
 class App extends Component {
   constructor(props) {
@@ -53,10 +55,25 @@ class App extends Component {
         <Notifications listNotifications={listNotifications} />
         <div className='App'>
           <Header />
-          <div className='App-body'>
-            {!isLoggedIn && <Login />}
-            {isLoggedIn && <CourseList listCourses={listCourses} />}
-          </div>
+            <div className='App-body'>
+              {!isLoggedIn && (
+                  <BodySectionWithMarginBottom title='Log in to continue'>
+                    <Login />
+                  </BodySectionWithMarginBottom>
+                )}
+                {isLoggedIn && (
+                  <BodySectionWithMarginBottom title='Course List'>
+                    <CourseList listCourses={listCourses} />
+                  </BodySectionWithMarginBottom>
+                )}
+                <BodySection title='News from the School'>
+                  <p>
+                    A paragraph with some random text. A paragraph with some random text.
+                    A paragraph with some random text. A paragraph with some random text.
+                    A paragraph with some random text. A paragraph with some random text.
+                  </p>
+                </BodySection>
+              </div>
           <Footer />
         </div>
       </Fragment>
