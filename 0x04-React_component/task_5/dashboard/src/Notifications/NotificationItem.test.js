@@ -21,4 +21,13 @@ describe('NotificationItem', () => {
     
     expect(wrapper.html()).equal('<li data-notification-type="default"><u>test</u></li>');
   });
+
+  test('spy as the markAsRead property and Check that when simulating a click on the component, the spy is called with the right ID argument', () => {
+    const wrapper = shallow(<NotificationItem type='default' value='test' id={1} />);
+    const markAsRead = wrapper.instance().markAsRead = jest.fn();
+    wrapper.find('li').first().simulate('click');
+    markAsRead(1);
+    expect(markAsRead).toHaveBeenCalled();
+    expect(markAsRead).toHaveBeenCalledWith(1);
+  });
 });
