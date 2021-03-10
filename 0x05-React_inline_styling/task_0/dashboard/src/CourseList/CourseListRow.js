@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const rowStyles = { backgroundColor: "#f5f5f5ab" };
@@ -8,7 +8,6 @@ function CourseListRow({ isHeader, textFirstCell, textSecondCell }) {
   let element;
 
   if (isHeader === true) {
-    //
     if (textSecondCell === null) {
       element = <th colSpan="2">{textFirstCell}</th>;
     } else {
@@ -19,7 +18,6 @@ function CourseListRow({ isHeader, textFirstCell, textSecondCell }) {
         </>
       );
     }
-    //
   } else if (isHeader === false) {
     element = (
       <>
