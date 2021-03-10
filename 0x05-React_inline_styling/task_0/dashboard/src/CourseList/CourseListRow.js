@@ -1,28 +1,41 @@
-import React, { Fragment } from 'react';
+import react from 'react';
 import PropTypes from 'prop-types';
 
-const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
-  const style = { 'background-color': isHeader ? '#deb5b54' : '#f5f5f5ab' };
-  return (
-    <tr style={style}>
-      {isHeader ? (
-        textSecondCell === null ? (
-          <th colSpan='2'>{textFirstCell}</th>
-        ) : (
-          <Fragment>
-            <th>{textFirstCell}</th>
-            <th>{textSecondCell}</th>
-          </Fragment>
-        )
-      ) : (
-        <Fragment>
-          <td>{textFirstCell}</td>
-          <td>{textSecondCell}</td>
-        </Fragment>
-      )}
-    </tr>
-  );
-};
+const rowStyles = { backgroundColor: "#f5f5f5ab" };
+const headerRowStyles = { backgroundColor: "#deb5b545" };
+
+function CourseListRow({ isHeader, textFirstCell, textSecondCell }) {
+  let element;
+
+  if (isHeader === true) {
+    //
+    if (textSecondCell === null) {
+      element = <th colSpan="2">{textFirstCell}</th>;
+    } else {
+      element = (
+        <>
+          <th>{textFirstCell}</th>
+          <th>{textSecondCell}</th>
+        </>
+      );
+    }
+    //
+  } else if (isHeader === false) {
+    element = (
+      <>
+        <td>{textFirstCell}</td>
+        <td>{textSecondCell}</td>
+      </>
+    );
+  }
+
+  let isHeaderStyle;
+
+  if (isHeader) isHeaderStyle = headerRowStyles;
+  else isHeaderStyle = rowStyles;
+
+  return <tr style={isHeaderStyle}>{element}</tr>;
+}
 
 CourseListRow.propTypes = {
   isHeader: PropTypes.bool,
