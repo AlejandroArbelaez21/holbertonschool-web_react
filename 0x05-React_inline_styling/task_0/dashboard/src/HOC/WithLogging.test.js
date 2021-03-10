@@ -1,4 +1,3 @@
-import chai from 'chai';
 import React, { Component } from 'react';
 import { mount } from 'enzyme';
 import WithLogging from './WithLogging';
