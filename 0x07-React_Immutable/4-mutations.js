@@ -1,6 +1,6 @@
 import immutable from 'immutable';
 
-const { Map, set } = immutable;
+const { Map } = immutable;
 
 export const map = Map({
   1: 'Liam',
