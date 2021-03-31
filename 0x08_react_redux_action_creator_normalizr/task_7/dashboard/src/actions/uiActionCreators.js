@@ -1,41 +1,59 @@
 import fetch from 'node-fetch';
 import { LOGIN, LOGOUT, DISPLAY_NOTIFICATION_DRAWER, HIDE_NOTIFICATION_DRAWER, LOGIN_SUCCESS, LOGIN_FAILURE } from './uiActionTypes';
 
-export const login = (email, password) => 
-dispatch({
+export const login = (email, password) => {
+  return {
     type: LOGIN,
-    user: { email, password }
-});
+    user: { email, password },
+  };
+};
 
-export const logout = () => 
-dispatch({ 
-  type: LOGOUT 
-});
+export const boundLogin = (email, password) => dispatch(login(email, password));
 
-export const displayNotificationDrawer = () => 
-dispatch({
-  type: DISPLAY_NOTIFICATION_DRAWER
-});
+export const logout = () => {
+  return {
+    type: LOGOUT,
+  };
+};
 
-export const hideNotificationDrawer = () => 
-dispatch({
-  type: HIDE_NOTIFICATION_DRAWER
-});
+export const boundLogout = () => dispatch(logout());
 
-export const loginSuccess = () =>
-dispatch({
-  type: LOGIN_SUCCESS
-});
+export const displayNotificationDrawer = () => {
+  return {
+    type: DISPLAY_NOTIFICATION_DRAWER,
+  };
+};
 
-export const loginFailure = () =>
-dispatch({
-  type: LOGIN_FAILURE
-});
+export const boundDisplayNotificationDrawer = () =>
+  dispatch(displayNotificationDrawer());
+
+export const hideNotificationDrawer = () => {
+  return {
+    type: HIDE_NOTIFICATION_DRAWER,
+  };
+};
+
+export const boundHideNotificationDrawer = () =>
+  dispatch(hideNotificationDrawer());
+
+export const loginSuccess = () => {
+  return {
+    type: LOGIN_SUCCESS,
+  };
+};
+
+export const loginFailure = () => {
+  return {
+    type: LOGIN_FAILURE,
+  };
+};
 
 export const loginRequest = (email, password) => {
-  login(email, password);
-
-  fetch('/login-success.json')
-  .then((res) => loginSuccess())
-  .catch((error) => loginFailure());
+  return (dispatch) => {
+    dispatch(login(email, password));
+    return fetch("http://localhost:8564/login-success.json")
+      .then((res) => res.json())
+      .then((json) => dispatch(loginSuccess()))
+      .catch((error) => dispatch(loginFailure()));
+  };
 };
