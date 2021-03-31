@@ -1,9 +1,9 @@
-import { markAsRead, setNotificationFilter, } from './notificationActionCreators';
+import { markAsAread, setNotificationFilter, } from './notificationActionCreators';
 import { MARK_AS_READ, SET_TYPE_FILTER, NotificationTypeFilters } from './notificationActionTypes';
 
 describe('notification action creators return expected values', () => {
-    test('markAsRead', () => {
-    const returnVal = markAsRead(1);
+    test('markAsAread', () => {
+    const returnVal = markAsAread(1);
 
     expect(returnVal).toHaveProperty('type', MARK_AS_READ);
     expect(returnVal).toHaveProperty('index', 1);
